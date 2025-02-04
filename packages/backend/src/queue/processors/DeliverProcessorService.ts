@@ -114,8 +114,8 @@ export class DeliverProcessorService {
 						notRespondingSince: new Date(),
 					});
 				} else if (i.notRespondingSince) {
-					// 1週間以上不通ならサスペンド
-					if (i.suspensionState === 'none' && i.notRespondingSince.getTime() <= Date.now() - 1000 * 60 * 60 * 24 * 7) {
+					// 30分以上不通ならサスペンド
+					if (i.suspensionState === 'none' && i.notRespondingSince.getTime() <= Date.now() - 1000 * 60 * 30) {
 						this.federatedInstanceService.update(i.id, {
 							suspensionState: 'autoSuspendedForNotResponding',
 						});
