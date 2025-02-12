@@ -1,6 +1,6 @@
 {
 	"name": "misskey",
-	"version": "2025.2.0-miry.0",
+	"version": "2025.2.0-miry.1",
 	"basedMisskeyVersion": "2025.2.0",
 	"basedCherryPickVersion": "4.15.0",
 	"codename": "nasubi",
