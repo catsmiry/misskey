@@ -11,7 +11,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<div class="shape2"></div>
 	<div class="logo-wrapper">
 		<div class="powered-by">Powered by</div>
-		<img :src="cherrypicksvg" class="cherrypick"/>
+		<img :src="misskeysvg" class="misskey"/>
 	</div>
 	<div class="emojis">
 		<MkEmoji :normal="true" :noStyle="true" emoji="👍"/>

@@ -175,7 +175,7 @@ const menuDef = computed(() => [{
 		active: currentPage.value?.route.name === 'migration',
 	}, {
 		icon: 'ti ti-bulb-filled',
-		text: 'CherryPick',
+		text: 'Misskey Miry Remix',
 		to: '/settings/cherrypick',
 		active: currentPage.value?.route.name === 'cherrypick',
 	}, {
