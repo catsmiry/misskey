@@ -6,7 +6,7 @@
 import * as nodemailer from 'nodemailer';
 import juice from 'juice';
 import { Inject, Injectable } from '@nestjs/common';
-import { validate as validateEmail } from 'deep-email-validator';
+import { verifyEmail, isDisposableEmail } from '@devmehq/email-validator-js';
 import { UtilityService } from '@/core/UtilityService.js';
 import { DI } from '@/di-symbols.js';
 import type { Config } from '@/config.js';
@@ -186,14 +186,21 @@ export class EmailService {
 			} else if (this.meta.enableTruemailApi && this.meta.truemailInstance && this.meta.truemailAuthKey != null) {
 				validated = await this.trueMail(this.meta.truemailInstance, emailAddress, this.meta.truemailAuthKey);
 			} else {
-				validated = await validateEmail({
-					email: emailAddress,
-					validateRegex: true,
-					validateMx: true,
-					validateTypo: false, // TLDを見ているみたいだけどclubとか弾かれるので
-					validateDisposable: true, // 捨てアドかどうかチェック
-					validateSMTP: false, // 日本だと25ポートが殆どのプロバイダーで塞がれていてタイムアウトになるので
+				const result = await verifyEmail({
+					emailAddress,
+					verifyMx: true,
+					verifySmtp: false,
+					timeout: 3000,
 				});
+				if (!result.validFormat) {
+					validated = { valid: false, reason: 'format' };
+				} else if (!result.validMx) {
+					validated = { valid: false, reason: 'mx' };
+				} else if (isDisposableEmail(emailAddress)) {
+					validated = { valid: false, reason: 'disposable' };
+				} else {
+					validated = { valid: true, reason: null };
+				}
 			}
 		}
 
