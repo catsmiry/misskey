@@ -3748,3 +3748,10 @@ _entrance:
   showAnotherInstanceDescription: "エントランスで「他のサーバーを探す」を表示します。"
   showSignin: "ログインを表示"
   showSigninDescription: "エントランスでログインを表示します。"
+
+_uploadMultipart:
+  error: "アップロードエラー"
+  overflow: "ファイルサイズが大きすぎます（最大: 2GB）。データベースの制限により、現在2GB以上のファイルはアップロードできません。"
+  rateLimit: "アップロードがレート制限により中止されました。しばらく時間をおいてから再試行してください。"
+  tooManyRetries: "ファイルアップロード中に{retries}回のリトライを試みましたが、失敗しました。\nしばらく時間をおいてから再試行してください。"
+  failedToCreateMultipart: "ファイルアップロード中に失敗しました。\n{status}: {statusText}"

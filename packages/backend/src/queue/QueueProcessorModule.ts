@@ -45,6 +45,7 @@ import { ExportFavoritesProcessorService } from './processors/ExportFavoritesPro
 import { RelationshipProcessorService } from './processors/RelationshipProcessorService.js';
 import { ScheduledNoteDeleteProcessorService } from './processors/ScheduledNoteDeleteProcessorService.js';
 import { ScheduleNotePostProcessorService } from './processors/ScheduleNotePostProcessorService.js';
+import { CleanExpiredMultipartUploadsProcessorService } from './processors/CleanExpiredMultipartUploadsProcessorService.js';
 
 @Module({
 	imports: [
@@ -92,6 +93,7 @@ import { ScheduleNotePostProcessorService } from './processors/ScheduleNotePostP
 		QueueProcessorService,
 		ScheduledNoteDeleteProcessorService,
 		ScheduleNotePostProcessorService,
+		CleanExpiredMultipartUploadsProcessorService,
 	],
 	exports: [
 		QueueProcessorService,

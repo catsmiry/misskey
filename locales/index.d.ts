@@ -14011,6 +14011,30 @@ export interface Locale extends ILocale {
          */
         "showSigninDescription": string;
     };
+    "_uploadMultipart": {
+        /**
+         * アップロードエラー
+         */
+        "error": string;
+        /**
+         * ファイルサイズが大きすぎます（最大: 2GB）。データベースの制限により、現在2GB以上のファイルはアップロードできません。
+         */
+        "overflow": string;
+        /**
+         * アップロードがレート制限により中止されました。しばらく時間をおいてから再試行してください。
+         */
+        "rateLimit": string;
+        /**
+         * ファイルアップロード中に{retries}回のリトライを試みましたが、失敗しました。
+         * しばらく時間をおいてから再試行してください。
+         */
+        "tooManyRetries": ParameterizedString<"retries">;
+        /**
+         * ファイルアップロード中に失敗しました。
+         * {status}: {statusText}
+         */
+        "failedToCreateMultipart": ParameterizedString<"status" | "statusText">;
+    };
 }
 declare const locales: {
     [lang: string]: Locale;
